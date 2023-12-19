@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,19 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'CheckInEvent';
+export class AppComponent implements OnInit {
+  constructor(private router: Router) {}
+
+  public isShowNav = true;
+  
+  ngOnInit(): void {
+    if(window.location.href.includes("/register")) {
+      this.isShowNav = false;
+    }
+  }
+
+  public logOutAdmin() {
+    this.router.navigate(['admin/login']);
+  }
+
 }
