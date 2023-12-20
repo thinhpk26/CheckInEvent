@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ShowNavService } from '../../../service/show-nav.service';
 
 @Component({
   selector: 'app-register',
@@ -7,6 +8,16 @@ import { Component } from '@angular/core';
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
+  constructor(private isShowSV: ShowNavService) {
+
+  }
+  
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.isShowSV.setDisplayNav(false);
+    })
+  }
+
 
 }

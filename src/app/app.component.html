@@ -1,21 +1,23 @@
 <div id="paging">
   <div id="navbar" *ngIf="isShowNav">
-    <div class="logo"></div>
+    <div class="logo">
+        <div class="logo-img"></div>
+    </div>
     <div class="nav-list">
       <div class="nav-item nav-dropdown">
         <span>Check-in</span>
-        <i class="fa-solid fa-caret-down"></i>
+        <i class="nav-dropdown-icon fa-solid fa-caret-down"></i>
         <div class="nav-dropdown__list">
             <div class="nav-dropdown__item">
-                <a class="nav-item__link" routerLink="/checkin/email-numberphone">Email hoặc số điện thoại</a>
+                <a class="nav-item__link" routerLink="/checkin/email-numberphone" routerLinkActive="active">Email hoặc số điện thoại</a>
             </div>
             <div class="nav-dropdown__item">
-                <a class="nav-item__link" routerLink="/checkin/qr-code">QR Code</a>
+                <a class="nav-item__link" routerLink="/checkin/qr-code" routerLinkActive="active">QR Code</a>
             </div>
         </div>
       </div>
       <div class="nav-item">
-        <a class="nav-item__link" routerLink="/user-management">Quản lý người dùng</a>
+        <a class="nav-item__link" routerLink="/user-management" routerLinkActive="active">Quản lý người dùng</a>
       </div>
     </div>
     <div class="log-out">
