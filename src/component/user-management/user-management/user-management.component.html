@@ -1,1 +1,95 @@
-<p>user-management works!</p>
+<div id="user-management">
+    <div class="user-management-header">
+        <h1>Quản lý người dùng</h1>
+        <div class="u-m__action">
+            <button class="btn-action btn-action--primary-icon u-m__action__add">
+                Thêm <i class="fa-solid fa-plus"></i>
+            </button>
+            <button class="btn-action btn-action--icon u-m__action__reload" (click)="reloadTable($event)">
+                <i class="fa-solid fa-rotate-right"></i>
+            </button>
+        </div>
+    </div>
+    <div class="u-m__view">
+        <div class="u-m__users__table">
+            <div class="u-m__users__table_cover">
+                <table class="u-m__users__table__main">
+                    <thead>
+                        <tr>
+                            <td class="header-item">Họ tên</td>
+                            <td class="header-item">Email</td>
+                            <td class="header-item">Số điện thoại</td>
+                            <td class="header-item">Khóa</td>
+                            <td class="header-item">Ảnh</td>
+                            <td class="header-item">Facebook</td>
+                            <td class="header-item">Sửa</td>
+                            <td class="header-item">Xóa</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngIf="data && data.users.length > 0; else empty">
+                            <tr *ngFor="let user of data.users">
+                                <td class="table-data table-data--text">
+                                    {{ user.fullName }}
+                                </td>
+                                <td class="table-data table-data--text">
+                                    {{ user.email }}
+                                </td>
+                                <td class="table-data table-data--text">
+                                    {{ user.phoneNumber }}
+                                </td>
+                                <td class="table-data table-data--number">
+                                    {{ user.generation }}
+                                </td>
+                                <td class="table-data table-data--text">
+                                    {{ user.image }}
+                                </td>
+                                <td class="table-data table-data--text">
+                                    {{ user.phoneNumber }}
+                                </td>
+                                <td class="table-data">
+                                    <button class="btn-action btn-action--primary u-m__action__update" (click)="updateUser($event)">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                </td>
+                                <td class="table-data">
+                                    <button class="btn-action btn-action--primary u-m__action__delete" (click)="deleteUser($event)">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </ng-container>
+                        <ng-template #empty>
+                            <tr class="empty-box">
+                                <td colspan="8">
+                                    <div class="empty-box-cover">
+                                        <i class="fa-solid fa-box-archive"></i>
+                                        <div>Không có dữ liệu</div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </tbody>
+                </table>
+            </div>
+            <ng-template [ngIf]="data && data.users.length > 0">
+                <div class="u-m__table__footer">
+                    <div class="left">
+                        Số lượng: {{data.count}}
+                    </div>
+                    <div class="right">
+                        <div class="page-limit">
+                            Số bản ghi:
+                            <select class="page-limit-choose" (change)="chooseLimit($event)">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

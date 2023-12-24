@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ShowNavService } from '../../../service/show-nav.service';
+import { ShowNavService } from '../../../service/show-nav/show-nav.service';
 
 @Component({
   selector: 'app-register',

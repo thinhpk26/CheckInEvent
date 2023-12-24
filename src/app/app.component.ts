@@ -1,7 +1,7 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { ShowNavService } from '../service/show-nav.service';
+import { ShowNavService } from '../service/show-nav/show-nav.service';
 
 @Component({
   selector: 'app-root',
