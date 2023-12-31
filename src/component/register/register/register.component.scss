@@ -1,0 +1,256 @@
+$nav-color: #83ace9;
+$main-color: #0d6efd;
+:host {
+  ::ng-deep {
+    .register-container {
+      .signup {
+        .birthday-layout {
+          @media (max-width: 1199.98px) {
+            .n-grid {
+              grid-template-columns: repeat(1, minmax(0px, 1fr)) !important;
+            }
+
+            .left-birthday,
+            .left-cloud {
+              display: none;
+            }
+
+            .left-body {
+              width: 100% !important;
+              margin: 0 !important;
+              text-align: center !important;
+
+              h1,
+              p {
+                width: 100% !important;
+              }
+            }
+
+            .layout-right {
+              .right-title {
+                h1,
+                p {
+                  width: 100% !important;
+                }
+
+                input,
+                select {
+                  width: 100% !important;
+                }
+              }
+
+              h1,
+              p {
+                margin: 0 auto;
+              }
+            }
+          }
+
+          .n-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0px, 1fr));
+            gap: 0px;
+
+            .layout-left {
+              height: 100%;
+              position: relative;
+              background: linear-gradient(
+                90deg,
+                $nav-color 0%,
+                $main-color 100%
+              );
+              opacity: 0.8;
+              color: #fff;
+              padding-top: 40px;
+              padding-left: 10px;
+              padding-right: 10px;
+              box-sizing: border-box;
+
+              .left-body {
+                margin: 0px 80px;
+
+                h1 {
+                  width: 400px;
+                  font-size: 36px;
+                  font-weight: 700;
+                  line-height: 57.6px;
+                  margin: 24.12px 0;
+                }
+
+                p {
+                  width: 400px;
+                  font-size: 24px;
+                  line-height: 38.4px;
+                  margin: 24px 0;
+                }
+
+                width: 40rem;
+
+                img {
+                  width: 190px;
+                  height: 124px;
+                  object-fit: cover;
+                }
+              }
+
+              .left-birthday {
+                position: absolute;
+                bottom: 0;
+                right: -96px;
+                z-index: 10;
+                width: auto;
+                height: 40vh;
+              }
+
+              .left-cloud {
+                position: absolute;
+                height: 100%;
+                width: 16rem;
+                top: 0;
+                right: -94px;
+              }
+            }
+
+            .layout-right {
+              box-sizing: border-box;
+              padding: 40px 10px;
+              z-index: 20;
+              min-height: 100vh;
+              max-width: 460px;
+              margin: 0 auto;
+
+              .right-title {
+                .border-gradient {
+                  display: inline-block;
+                  width: 230px;
+                  height: 230px;
+                  border: solid 5px transparent;
+                  border-radius: 32px;
+                  background-clip: content-box, border-box;
+                  background-origin: border-box;
+                  background-image: linear-gradient(white, white),
+                    linear-gradient(90deg, #0d6efd 0%, #83ace9 100%);
+                  overflow: hidden;
+                  position: relative;
+
+                  img {
+                    transform: translate(1px, 10px);
+                    width: 200px;
+                    height: 200px;
+                    object-fit: cover;
+                  }
+                }
+
+                label {
+                  font-weight: 500;
+                }
+
+                .img-preview {
+                  border: 1px dashed #000000a1;
+                  border-radius: 5px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  color: #000000a1;
+
+                  img {
+                    max-width: 100%;
+                    max-height: 100%;
+                  }
+                }
+
+                h1 {
+                  line-height: 64px;
+                  padding: 5px 0;
+                  font-weight: 700;
+                  font-size: 40px;
+                  width: 440px;
+                  height: auto;
+                  text-align: center;
+                  width: 100%;
+                }
+
+                p {
+                  font-weight: 500;
+                  text-align: center;
+                  width: 440px;
+                  height: auto;
+                  font-size: 20px;
+                  line-height: 32px;
+                  width: 100%;
+                }
+
+                input,
+                select {
+                  width: 100%;
+                  font-weight: 500;
+                }
+
+                #face,
+                #qrcode {
+                  width: 20px !important;
+                }
+              }
+
+              .right-body {
+                .img-preview {
+                  border: 1px dashed #ccc;
+                  border-radius: 5px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  color: #ccc;
+
+                  img {
+                    max-width: 100%;
+                    max-height: 100%;
+                  }
+                }
+
+                .qr-information {
+                  margin-top: 10px;
+
+                  p {
+                    text-align: center;
+                    font-size: 20px;
+                    font-weight: 500;
+                  }
+
+                  .text-note {
+                    color: #f47b2a;
+                    font-weight: 700;
+                  }
+                }
+
+                .transer-information {
+                  .transer-coppy {
+                    display: flex;
+                    text-align: center;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+
+                    .coppy {
+                      background-color: #ddcece;
+                      padding: 5px 10px;
+                      border-radius: 50%;
+                      cursor: pointer;
+
+                      &:hover {
+                        background-color: #bea5a5;
+                      }
+                    }
+                  }
+
+                  margin-top: 10px;
+                  text-align: center;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
