@@ -1,1 +1,67 @@
-<p>popup-form works!</p>
+<div *ngIf="isShow">
+    <div class="popup-overlay">
+        <div class="popup">
+            <div class="popup-head">
+                <span class="popup-head-title">{{ title }}</span>
+                <span class="popup-head-close" (click)="close()"><i class="fa-solid fa-xmark"></i></span>
+            </div>
+            <form class="popup-form">
+                <div class="popup-content" >
+                    <ng-container *ngIf="this.stage === 1; else updateStage">
+                        <div class="popup-content-item">
+                            <label for="fullname">Họ tên: </label>
+                            <input type="text" id="fullname" name="fullName" [(ngModel)]="data.fullName">
+                        </div>
+                        <div class="popup-content-item">
+                            <label for="email">Email: </label>
+                            <input type="text" id="email" name="email" [(ngModel)]="data.email">
+                        </div>
+                        <div class="popup-content-item">
+                            <label for="generation">Khóa: </label>
+                            <input type="text" id="generation" name="generation" [(ngModel)]="data.generation">
+                        </div>
+                        <div class="popup-content-item" >
+                            <label for="numberphone">Số điện thoại: </label>
+                            <input type="text" id="numberphone" name="numberphone" [(ngModel)]="data.phoneNumber">
+                        </div>
+                        <div class="popup-content-item">
+                            <label for="facebook">Facebook: </label>
+                            <input type="text" id="facebook" name="facebook" [(ngModel)]="data.facebook">
+                        </div>
+                        <div class="popup-content-item">
+                            <label for="password">Mật khẩu: </label>
+                            <input type="text" id="password" name="password" [(ngModel)]="data.password">
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="popup-action">
+                    <button type="reset" class="popup-action--cancel btn-action" (click)="close()">Hủy</button>
+                    <button type="button" class="popup-action--confirm btn-action" (click)="confirm()">Xác nhận</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<ng-template #updateStage>
+    <div class="popup-content-item">
+        <label for="fullname">Họ tên: </label>
+        <input type="text" id="fullname" name="fullName" [(ngModel)]="data.fullName">
+    </div>
+    <div class="popup-content-item">
+        <label for="email">Email: </label>
+        <input type="text" id="email" name="email" [(ngModel)]="data.email">
+    </div>
+    <div class="popup-content-item">
+        <label for="generation">Khóa: </label>
+        <input type="text" id="generation" name="generation" [(ngModel)]="data.generation">
+    </div>
+    <div class="popup-content-item" >
+        <label for="numberphone">Số điện thoại: </label>
+        <input type="text" id="numberphone" name="numberphone" [(ngModel)]="data.phoneNumber">
+    </div>
+    <div class="popup-content-item">
+        <label for="facebook">Facebook: </label>
+        <input type="text" id="facebook" name="facebook" [(ngModel)]="data.facebook">
+    </div>
+</ng-template>
