@@ -2,7 +2,7 @@
     <div class="user-management-header">
         <h1>Quản lý người dùng</h1>
         <div class="u-m__action">
-            <button class="btn-action btn-action--primary-icon u-m__action__add">
+            <button class="btn-action btn-action--primary-icon u-m__action__add" (click)="openPopup()">
                 Thêm <i class="fa-solid fa-plus"></i>
             </button>
             <button class="btn-action btn-action--icon u-m__action__reload" (click)="reloadTable($event)">
@@ -28,7 +28,7 @@
                     </thead>
                     <tbody>
                         <ng-container *ngIf="data && data.users.length > 0; else empty">
-                            <tr *ngFor="let user of data.users">
+                            <tr *ngFor="let user of data.users" id="{{user.id}}">
                                 <td class="table-data table-data--text">
                                     {{ user.fullName }}
                                 </td>
@@ -45,15 +45,15 @@
                                     {{ user.image }}
                                 </td>
                                 <td class="table-data table-data--text">
-                                    {{ user.phoneNumber }}
+                                    {{ user.facebook }}
                                 </td>
                                 <td class="table-data">
-                                    <button class="btn-action btn-action--primary u-m__action__update" (click)="updateUser($event)">
+                                    <button class="btn-action btn-action--primary u-m__action__update" (click)="updateUserClick($event, user.id!)">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </button>
                                 </td>
                                 <td class="table-data">
-                                    <button class="btn-action btn-action--primary u-m__action__delete" (click)="deleteUser($event)">
+                                    <button class="btn-action btn-action--primary u-m__action__delete" (click)="deleteUser($event, user.id!)">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </td>
@@ -93,3 +93,10 @@
         </div>
     </div>
 </div>
+<app-popup-form 
+    [title]="popupTitle" 
+    [(isShow)]="isShowPopup"
+    [(data)]="dataForm"
+    (confirm)="confirmPopup($event)"
+    [stage]="popupStage">
+</app-popup-form>

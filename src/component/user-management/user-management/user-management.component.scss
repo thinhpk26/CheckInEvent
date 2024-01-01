@@ -21,6 +21,7 @@ $color-heavy: #0e559c;
             height: calc(100vh - 64px - 100px);
             .u-m__users__table_cover {
                 flex: 1;
+                overflow: auto;
             }
             .u-m__users__table__main {
                 border-collapse: collapse;
@@ -64,6 +65,7 @@ $color-heavy: #0e559c;
                     align-items: center;
                     color: #7c7c7c;
                     font-weight: 600;
+                    height: calc(100vh - 64px - 100px - 36px);
                     i {
                         font-size: 40px;
                         margin-bottom: 8px;
@@ -71,33 +73,29 @@ $color-heavy: #0e559c;
                 }
             }
         }
-
+        .btn-action {
+            background-color: $color-primary;
+            height: 36px;
+            padding: 0 12px;
+            border: none;
+            outline: none;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: 4px;
+            cursor: pointer;
+        }
+        .btn-action:hover {
+            background-color: $color-light;
+        }
+        .btn-action:active {
+            outline: none;
+            background-color: $color-heavy;
+        }
     }
-}
-
-.btn-action {
-    background-color: $color-primary;
-    height: 36px;
-    padding: 0 12px;
-    border: none;
-    outline: none;
-    border-radius: 8px;
-    color: #fff;
-    font-weight: 700;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 4px;
-    cursor: pointer;
-}
-
-.btn-action:hover {
-    background-color: $color-light;
-}
-
-.btn-action:active {
-    outline: none;
-    background-color: $color-heavy;
 }
 
 .table-data--number {
