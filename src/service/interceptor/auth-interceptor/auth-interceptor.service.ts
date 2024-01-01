@@ -1,12 +1,17 @@
-import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, from, lastValueFrom } from 'rxjs';
+import { Observable, catchError, from, lastValueFrom, map, tap, throwError } from 'rxjs';
 import { getGlobalConstant } from '../../../global-constants';
 import { LocalstorageService } from '../../localstorage/localstorage.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+export class ResponseCustom {
+  statusCode?: number;
+  data?: any;
+  isSuccess?: boolean;
+  error?: any;
+}
+
+@Injectable()
 export class AuthInterceptorService implements HttpInterceptor{
   private tokenName:string = getGlobalConstant("tokenLocalName");
   constructor(private http: HttpClient, private localStorageSV: LocalstorageService) { }
@@ -26,7 +31,30 @@ export class AuthInterceptorService implements HttpInterceptor{
       }
     })
 
-    return next.handle(authReq);
+    return next.handle(authReq).pipe(
+      map((event: HttpEvent<any>) => {
+        if (event instanceof HttpResponse) {
+          return event.clone({
+            body: {
+              statusCode: event.status,
+              data: event.body,
+              isSuccess: event.ok,
+              error: null
+            }
+          });
+        }
+        return event;
+      }),
+      catchError((error: HttpErrorResponse) => {
+        const responseCustom: ResponseCustom = {
+          statusCode: error.status,
+          data: null,
+          isSuccess: error.ok,
+          error: error.message
+        };
+        return throwError(() => responseCustom);
+      })
+    );
   }
 
 }
